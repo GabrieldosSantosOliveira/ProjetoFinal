@@ -9,15 +9,19 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       titulo: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       editora: {
+        allowNull: false,
+
         type: Sequelize.STRING
       },
       data_publicacao: {
         type: Sequelize.DATE
       },
       preco: {
+        allowNull: false,
         type: Sequelize.STRING
       },
       createdAt: {
