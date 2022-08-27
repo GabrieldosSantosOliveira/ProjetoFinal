@@ -1,5 +1,4 @@
 const express = require("express");
-const { MiddlewareCors } = require("./middleware/cors")
 const app = express();
 const path = require("path");
 const cors = require('cors')
@@ -8,7 +7,6 @@ const swaggerDocument = require('../swagger.json');
 const { routerAutor } = require("./routes/autor")
 const { routerLivro } = require("./routes/livro")
 app.use(cors())
-app.use(MiddlewareCors)
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
