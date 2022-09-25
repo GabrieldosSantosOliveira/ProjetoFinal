@@ -6,6 +6,7 @@ const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('../swagger.json');
 const { routerAutor } = require("./routes/autor")
 const { routerLivro } = require("./routes/livro")
+require("dotenv").config();
 app.use(cors())
 app.use(express.json());
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
@@ -17,7 +18,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(routerAutor);
 app.use(routerLivro);
 
-const port = 3000;
+const port = process.env.PORT;
 app.listen(port, () => {
   console.log(`http://localhost:${port}`)
 })
