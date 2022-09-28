@@ -1,0 +1,5 @@
+[build]
+  command = "npm run install"
+  publish = "src/"
+[dev]
+  command = "npm start"
