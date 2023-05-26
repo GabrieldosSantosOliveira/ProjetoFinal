@@ -1,4 +1,4 @@
-let { autor } = require("../../models");
+import { autor }  from "../../models";
 
 class Autor {
   async FindOne(req, res) {

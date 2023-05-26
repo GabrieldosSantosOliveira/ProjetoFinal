@@ -1,6 +1,0 @@
-[build]
-  command = "npm run install"
-  publish = "src/"
-  functions = "src/"
-[dev]
-  command = "npm start"

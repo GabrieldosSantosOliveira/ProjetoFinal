@@ -1,5 +1,5 @@
-const { Router } = require("express")
-const { Autor } = require("../controllers/Autor")
+import { Router } from "express";
+import { Autor } from "../controllers/Autor";
 const routerAutor = Router();
 const Controller = new Autor();
 

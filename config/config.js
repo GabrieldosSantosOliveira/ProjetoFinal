@@ -1,4 +1,4 @@
-require("dotenv").config();
+require('dotenv').config()
 
 module.exports = {
   development: {
@@ -27,4 +27,4 @@ module.exports = {
     port: process.env.PORT,
     dialect: process.env.DIALECT,
   },
-};
+}

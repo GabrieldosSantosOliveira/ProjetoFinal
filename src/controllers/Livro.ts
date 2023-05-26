@@ -1,4 +1,4 @@
-let { livro } = require("../../models");
+import { livro }  from "../../models";
 
 class Livro {
   async FindAll(req, res) {
