@@ -1,21 +1,47 @@
-import { Sequelize, DataTypes, Model } from 'sequelize'
+import { Sequelize, DataTypes, Model, Optional } from 'sequelize'
 import { Models } from './types'
-export class Book extends Model {
+export type BookAttributes = {
+  id: string
+  title: string
+  publicationDate: Date
+  publisherId: string
+  price: number
+  createdAt: Date
+  updatedAt: Date
+}
+
+export type BookCreationAttributes = Optional<BookAttributes, 'id'>
+export class Book extends Model<BookAttributes, BookCreationAttributes> {
+  public id: string
+  public title: string
+  public publicationDate: Date
+  public price: number
+  public createdAt: Date
+  public updatedAt: Date
+  public publisherId: string
   static associate(models: Models) {
-    this.belongsTo(models.autor, { as: 'autor' })
+    this.hasOne(models.publisher, {
+      as: 'publisher',
+      foreignKey: 'publisherId',
+    })
+    this.belongsToMany(models.author, { through: 'exemplary' })
   }
 
   static initModel(sequelize: Sequelize) {
     this.init(
       {
-        titulo: DataTypes.STRING,
-        editora: DataTypes.STRING,
-        data_publicacao: DataTypes.DATE,
-        preco: DataTypes.STRING,
+        title: DataTypes.STRING,
+        price: DataTypes.INTEGER,
+        createdAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE,
+        id: { type: DataTypes.STRING, primaryKey: true },
+        publicationDate: DataTypes.DATE,
+        publisherId: DataTypes.STRING,
       },
       {
         sequelize,
-        modelName: 'livro',
+        modelName: 'book',
+        tableName: 'book',
       },
     )
   }

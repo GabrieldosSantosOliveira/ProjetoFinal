@@ -11,14 +11,17 @@ module.exports = {
     ],
   ],
   plugins: [
+    ['@babel/plugin-proposal-decorators', { legacy: true }],
+    '@babel/plugin-proposal-class-properties',
     [
       'module-resolver',
       {
         alias: {
+          '@/app': './src/app',
           '@/controllers': './src/controllers',
           '@/helpers': './src/helpers',
           '@/infra': './src/infra',
-          '@/interface': './src/interface',
+          '@/interfaces': './src/interfaces',
           '@/main': './src/main',
           '@/presentation': './src/presentation',
           '@/routes': './src/routes',

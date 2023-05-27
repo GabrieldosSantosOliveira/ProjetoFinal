@@ -1,2 +1,2 @@
 import { json } from 'express'
-export const jsonParser = () => json()
+export const jsonParser = json()

@@ -3,7 +3,7 @@
 
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('books', {
+    await queryInterface.createTable('book', {
       id: {
         allowNull: false,
         primaryKey: true,
@@ -40,6 +40,6 @@ module.exports = {
     })
   },
   async down(queryInterface) {
-    await queryInterface.dropTable('books')
+    await queryInterface.dropTable('book')
   },
 }

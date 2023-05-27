@@ -1,20 +1,16 @@
 import express from 'express'
 import { cors } from '../middlewares/cors'
 import { jsonParser } from '../middlewares/json-parser'
-import path from 'path'
 import { setupDocs } from './setup-docs'
 import { setupRoutes } from './setup-routes'
-export const setupApp = () => {
+import { logger } from '../middlewares/logger'
+export const setupApp = async () => {
   const app = express()
+  app.disable('x-powered-by')
   app.use(cors)
   app.use(jsonParser)
-  app.use(
-    express.urlencoded({
-      extended: true,
-    }),
-  )
-  app.use(express.static(path.join(__dirname, 'public')))
+  app.use(logger)
   setupDocs(app)
-  setupRoutes(app)
+  await setupRoutes(app)
   return { app }
 }

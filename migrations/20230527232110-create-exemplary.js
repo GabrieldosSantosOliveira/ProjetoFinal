@@ -13,7 +13,7 @@ module.exports = {
         allowNull: null,
         type: Sequelize.STRING,
         references: {
-          model: 'books',
+          model: 'book',
           key: 'id',
         },
       },
@@ -21,7 +21,7 @@ module.exports = {
         allowNull: null,
         type: Sequelize.STRING,
         references: {
-          model: 'authors',
+          model: 'author',
           key: 'id',
         },
       },
