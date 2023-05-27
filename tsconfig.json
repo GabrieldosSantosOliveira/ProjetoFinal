@@ -10,7 +10,16 @@
     "skipLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/app/*": ["./src/app/*"],
+      "@/controllers/*": ["./src/controllers/*"],
+      "@/helpers/*": ["./src/helpers/*"],
+      "@/infra/*": ["./src/infra/*"],
+      "@/interfaces/*": ["./src/interfaces/*"],
+      "@/main/*": ["./src/main/*"],
+      "@/presentation/*": ["./src/presentation/*"],
+      "@/routes/*": ["./src/routes/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/test/*": ["./test/*"]
     },
     "isolatedModules": true
   }

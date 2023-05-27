@@ -13,11 +13,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING,
       },
-      editora: {
-        allowNull: false,
-        type: Sequelize.STRING,
-      },
-      publication_date: {
+      publicationDate: {
         allowNull: false,
         type: Sequelize.DATE,
       },
@@ -25,11 +21,11 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER,
       },
-      publishingCompanyId: {
+      publisherId: {
         allowNull: false,
         type: Sequelize.STRING,
         references: {
-          model: 'publishing-companys',
+          model: 'publisher',
           key: 'id',
         },
       },
