@@ -1,28 +1,37 @@
 'use strict'
+/** @type {import('sequelize-cli').Migration} */
+
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('livros', {
+    await queryInterface.createTable('books', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
       },
-      titulo: {
+      title: {
         allowNull: false,
         type: Sequelize.STRING,
       },
       editora: {
         allowNull: false,
-
         type: Sequelize.STRING,
       },
-      data_publicacao: {
+      publication_date: {
+        allowNull: false,
         type: Sequelize.DATE,
       },
-      preco: {
+      price: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+      },
+      publishingCompanyId: {
         allowNull: false,
         type: Sequelize.STRING,
+        references: {
+          model: 'publishing-companys',
+          key: 'id',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -34,7 +43,7 @@ module.exports = {
       },
     })
   },
-  async down(queryInterface, Sequelize) {
-    await queryInterface.dropTable('livros')
+  async down(queryInterface) {
+    await queryInterface.dropTable('books')
   },
 }
