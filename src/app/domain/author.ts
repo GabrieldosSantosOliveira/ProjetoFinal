@@ -71,4 +71,13 @@ export class Author {
   public set updatedAt(updatedAt: Date) {
     this.props.updatedAt = updatedAt
   }
+
+  public update(
+    data: Partial<Pick<AuthorProps, 'firstName' | 'dateOfBirth' | 'lastName'>>,
+  ) {
+    if (data.dateOfBirth) this.dateOfBirth = data.dateOfBirth
+    if (data.firstName) this.firstName = data.firstName
+    if (data.lastName) this.lastName = data.lastName
+    this.updatedAt = new Date()
+  }
 }

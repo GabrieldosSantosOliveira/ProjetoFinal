@@ -3,13 +3,15 @@ import {
   CreateAuthorRepository,
   LoadAuthorByIdRepository,
   LoadAuthorsRepository,
+  SaveAuthorRepository,
 } from '@/app/repositories'
 
 export class InMemoryAuthorRepository
   implements
     CreateAuthorRepository,
     LoadAuthorByIdRepository,
-    LoadAuthorsRepository
+    LoadAuthorsRepository,
+    SaveAuthorRepository
 {
   private authors: Author[] = []
   async findAll(): Promise<Author[]> {
@@ -26,6 +28,13 @@ export class InMemoryAuthorRepository
 
   async create(author: Author): Promise<void> {
     this.authors.push(author)
+  }
+
+  async save(author: Author): Promise<void> {
+    const authorIndex = this.authors.findIndex(({ id }) => id === author.id)
+    if (authorIndex >= 0) {
+      this.authors[authorIndex] = author
+    }
   }
 }
 export const makeInMemoryAuthorRepository = () => {
