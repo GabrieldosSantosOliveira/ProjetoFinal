@@ -1,13 +1,21 @@
 import { Author } from '@/app/domain'
 import {
   CreateAuthorRepository,
-  LoadAuthorRepository,
+  LoadAuthorByIdRepository,
+  LoadAuthorsRepository,
 } from '@/app/repositories'
 
 export class InMemoryAuthorRepository
-  implements CreateAuthorRepository, LoadAuthorRepository
+  implements
+    CreateAuthorRepository,
+    LoadAuthorByIdRepository,
+    LoadAuthorsRepository
 {
   private authors: Author[] = []
+  async findAll(): Promise<Author[]> {
+    return this.authors
+  }
+
   async findById(id: string): Promise<Author | null> {
     const author = this.authors.find((author) => author.id === id)
     if (!author) {

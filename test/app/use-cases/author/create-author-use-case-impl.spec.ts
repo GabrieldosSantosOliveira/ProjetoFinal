@@ -18,7 +18,7 @@ const makeRequest = (
   dateOfBirth: faker.date.birthdate(),
   ...params,
 })
-describe('CreateAuthorUseCase', () => {
+describe('CreateAuthorUseCaseImpl', () => {
   it('should create author', async () => {
     const { inMemoryAuthorRepository, sut } = makeSut()
     const author = await sut.handle(makeRequest())

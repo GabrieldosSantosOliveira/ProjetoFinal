@@ -1,4 +1,3 @@
-import { Type } from 'class-transformer'
 import { IsDateString, IsNotEmpty, IsString } from 'class-validator'
 export interface CreateAuthorBodyDtoProps {
   firstName: string
@@ -21,6 +20,5 @@ export class CreateAuthorBodyDto {
   public lastName: string
 
   @IsDateString()
-  @Type(() => Date)
   public dateOfBirth: string | number
 }

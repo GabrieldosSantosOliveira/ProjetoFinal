@@ -1,5 +1,5 @@
 import { Author } from '../domain'
 
-export interface LoadAuthorRepository {
+export interface LoadAuthorByIdRepository {
   findById(id: string): Promise<Author | null>
 }
