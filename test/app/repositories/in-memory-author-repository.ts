@@ -3,6 +3,7 @@ import {
   CreateAuthorRepository,
   LoadAuthorByIdRepository,
   LoadAuthorsRepository,
+  RemoveAuthorRepository,
   SaveAuthorRepository,
 } from '@/app/repositories'
 
@@ -11,7 +12,8 @@ export class InMemoryAuthorRepository
     CreateAuthorRepository,
     LoadAuthorByIdRepository,
     LoadAuthorsRepository,
-    SaveAuthorRepository
+    SaveAuthorRepository,
+    RemoveAuthorRepository
 {
   private authors: Author[] = []
   async findAll(): Promise<Author[]> {
@@ -35,6 +37,13 @@ export class InMemoryAuthorRepository
     if (authorIndex >= 0) {
       this.authors[authorIndex] = author
     }
+  }
+
+  async remove(id: string): Promise<void> {
+    const authorsWithoutAuthorRemoved = this.authors.filter(
+      (author) => id !== author.id,
+    )
+    this.authors = authorsWithoutAuthorRemoved
   }
 }
 export const makeInMemoryAuthorRepository = () => {

@@ -12,13 +12,13 @@ export type BookAttributes = {
 
 export type BookCreationAttributes = Optional<BookAttributes, 'id'>
 export class Book extends Model<BookAttributes, BookCreationAttributes> {
-  public id: string
-  public title: string
-  public publicationDate: Date
-  public price: number
-  public createdAt: Date
-  public updatedAt: Date
-  public publisherId: string
+  declare id: string
+  declare title: string
+  declare publicationDate: Date
+  declare price: number
+  declare createdAt: Date
+  declare updatedAt: Date
+  declare publisherId: string
   static associate(models: Models) {
     this.hasOne(models.publisher, {
       as: 'publisher',

@@ -12,12 +12,12 @@ export type AuthorAttributes = {
 export type AuthorCreationAttributes = Optional<AuthorAttributes, 'id'>
 
 export class Author extends Model<AuthorAttributes, AuthorCreationAttributes> {
-  public id: string
-  public firstName: string
-  public lastName: string
-  public dateOfBirth: Date
-  public createdAt: Date
-  public updatedAt: Date
+  declare id: string
+  declare firstName: string
+  declare lastName: string
+  declare dateOfBirth: Date
+  declare createdAt: Date
+  declare updatedAt: Date
   static associate(models: Models) {
     this.belongsToMany(models.book, { through: 'exemplary' })
   }

@@ -1,5 +1,3 @@
-import 'reflect-metadata'
-import 'es6-shim'
 import { setupApp } from './config/setup-app'
 import { env } from './config/env'
 
